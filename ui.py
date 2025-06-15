@@ -1,5 +1,5 @@
 import streamlit as st
-import pandas as pd
+from config import authenticate_user
 from utils import process_file, save_processed_data
 from analytics import show_analytics
 from notifications import show_reminder_popup
@@ -12,7 +12,6 @@ def show_login():
     pwd = st.text_input("Password", type="password", key="password_input")
 
     if st.button("Login"):
-        from config import authenticate_user
         if authenticate_user(user, pwd):
             st.session_state['authenticated'] = True
             st.success("✅ Login successful! Redirecting...")
